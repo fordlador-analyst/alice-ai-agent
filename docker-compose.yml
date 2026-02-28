@@ -1,11 +1,18 @@
 version: "3.8"
 
 services:
-  alice-agent:
-    build: .
+  n8n:
+    image: n8nio/n8n
     restart: always
     environment:
-      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - N8N_HOST=93-189-228-179.nip.io
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=https
+      - NODE_ENV=production
+      - WEBHOOK_URL=https://93-189-228-179.nip.io/
+      - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY}
+    volumes:
+      - n8n_data:/home/node/.n8n
     networks:
       - web
 
@@ -22,6 +29,7 @@ services:
       - web
 
 volumes:
+  n8n_data:
   caddy_data:
 
 networks:
