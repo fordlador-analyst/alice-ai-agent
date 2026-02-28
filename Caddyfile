@@ -1,3 +1,3 @@
-{$N8N_HOST} {
-    reverse_proxy n8n:5678
+93-189-228-179.nip.io {
+    reverse_proxy alice-agent:5001
 }
